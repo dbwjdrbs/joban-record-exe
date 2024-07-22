@@ -1,0 +1,285 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\MyProject\\joban-record-exe\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{1C25EB8E-77E9-4486-BCA1-04214C3B3389}|joban-record-exe\\joban-record-exe.csproj|c:\\myproject\\joban-record-exe\\joban-record-exe\\models\\gamedatas\\entity\\gamedata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1C25EB8E-77E9-4486-BCA1-04214C3B3389}|joban-record-exe\\joban-record-exe.csproj|solutionrelative:joban-record-exe\\models\\gamedatas\\entity\\gamedata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1C25EB8E-77E9-4486-BCA1-04214C3B3389}|joban-record-exe\\joban-record-exe.csproj|c:\\myproject\\joban-record-exe\\joban-record-exe\\models\\gamedatas\\mapper\\gamedatamapper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1C25EB8E-77E9-4486-BCA1-04214C3B3389}|joban-record-exe\\joban-record-exe.csproj|solutionrelative:joban-record-exe\\models\\gamedatas\\mapper\\gamedatamapper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1C25EB8E-77E9-4486-BCA1-04214C3B3389}|joban-record-exe\\joban-record-exe.csproj|c:\\myproject\\joban-record-exe\\joban-record-exe\\utilities\\gameresultloader.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1C25EB8E-77E9-4486-BCA1-04214C3B3389}|joban-record-exe\\joban-record-exe.csproj|solutionrelative:joban-record-exe\\utilities\\gameresultloader.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1C25EB8E-77E9-4486-BCA1-04214C3B3389}|joban-record-exe\\joban-record-exe.csproj|c:\\myproject\\joban-record-exe\\joban-record-exe\\models\\gameresultdatas\\entity\\gameresultdata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1C25EB8E-77E9-4486-BCA1-04214C3B3389}|joban-record-exe\\joban-record-exe.csproj|solutionrelative:joban-record-exe\\models\\gameresultdatas\\entity\\gameresultdata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1C25EB8E-77E9-4486-BCA1-04214C3B3389}|joban-record-exe\\joban-record-exe.csproj|c:\\myproject\\joban-record-exe\\joban-record-exe\\models\\gamedatas\\entity\\lobbydata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1C25EB8E-77E9-4486-BCA1-04214C3B3389}|joban-record-exe\\joban-record-exe.csproj|solutionrelative:joban-record-exe\\models\\gamedatas\\entity\\lobbydata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1C25EB8E-77E9-4486-BCA1-04214C3B3389}|joban-record-exe\\joban-record-exe.csproj|c:\\myproject\\joban-record-exe\\joban-record-exe\\utilities\\ebaseaddresslist.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1C25EB8E-77E9-4486-BCA1-04214C3B3389}|joban-record-exe\\joban-record-exe.csproj|solutionrelative:joban-record-exe\\utilities\\ebaseaddresslist.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1C25EB8E-77E9-4486-BCA1-04214C3B3389}|joban-record-exe\\joban-record-exe.csproj|c:\\myproject\\joban-record-exe\\joban-record-exe\\utilities\\memorymanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1C25EB8E-77E9-4486-BCA1-04214C3B3389}|joban-record-exe\\joban-record-exe.csproj|solutionrelative:joban-record-exe\\utilities\\memorymanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1C25EB8E-77E9-4486-BCA1-04214C3B3389}|joban-record-exe\\joban-record-exe.csproj|c:\\myproject\\joban-record-exe\\joban-record-exe\\models\\gamedatas\\builder\\gamedatabuilder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1C25EB8E-77E9-4486-BCA1-04214C3B3389}|joban-record-exe\\joban-record-exe.csproj|solutionrelative:joban-record-exe\\models\\gamedatas\\builder\\gamedatabuilder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1C25EB8E-77E9-4486-BCA1-04214C3B3389}|joban-record-exe\\joban-record-exe.csproj|c:\\myproject\\joban-record-exe\\joban-record-exe\\models\\member\\builder\\memberbuilder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1C25EB8E-77E9-4486-BCA1-04214C3B3389}|joban-record-exe\\joban-record-exe.csproj|solutionrelative:joban-record-exe\\models\\member\\builder\\memberbuilder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1C25EB8E-77E9-4486-BCA1-04214C3B3389}|joban-record-exe\\joban-record-exe.csproj|c:\\myproject\\joban-record-exe\\joban-record-exe\\models\\gameresultdatas\\builder\\gameresultdatabuilder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1C25EB8E-77E9-4486-BCA1-04214C3B3389}|joban-record-exe\\joban-record-exe.csproj|solutionrelative:joban-record-exe\\models\\gameresultdatas\\builder\\gameresultdatabuilder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1C25EB8E-77E9-4486-BCA1-04214C3B3389}|joban-record-exe\\joban-record-exe.csproj|c:\\myproject\\joban-record-exe\\joban-record-exe\\utilities\\gamedataloader.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1C25EB8E-77E9-4486-BCA1-04214C3B3389}|joban-record-exe\\joban-record-exe.csproj|solutionrelative:joban-record-exe\\utilities\\gamedataloader.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1C25EB8E-77E9-4486-BCA1-04214C3B3389}|joban-record-exe\\joban-record-exe.csproj|c:\\myproject\\joban-record-exe\\joban-record-exe\\utilities\\pidloader.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1C25EB8E-77E9-4486-BCA1-04214C3B3389}|joban-record-exe\\joban-record-exe.csproj|solutionrelative:joban-record-exe\\utilities\\pidloader.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1C25EB8E-77E9-4486-BCA1-04214C3B3389}|joban-record-exe\\joban-record-exe.csproj|c:\\myproject\\joban-record-exe\\joban-record-exe\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1C25EB8E-77E9-4486-BCA1-04214C3B3389}|joban-record-exe\\joban-record-exe.csproj|solutionrelative:joban-record-exe\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1C25EB8E-77E9-4486-BCA1-04214C3B3389}|joban-record-exe\\joban-record-exe.csproj|c:\\myproject\\joban-record-exe\\joban-record-exe\\utilities\\changename.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1C25EB8E-77E9-4486-BCA1-04214C3B3389}|joban-record-exe\\joban-record-exe.csproj|solutionrelative:joban-record-exe\\utilities\\changename.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1C25EB8E-77E9-4486-BCA1-04214C3B3389}|joban-record-exe\\joban-record-exe.csproj|c:\\myproject\\joban-record-exe\\joban-record-exe\\models\\member\\entity\\member.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1C25EB8E-77E9-4486-BCA1-04214C3B3389}|joban-record-exe\\joban-record-exe.csproj|solutionrelative:joban-record-exe\\models\\member\\entity\\member.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 260,
+          "SelectedChildIndex": 2,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "LobbyData.cs",
+              "DocumentMoniker": "C:\\MyProject\\joban-record-exe\\joban-record-exe\\Models\\GameDatas\\Entity\\LobbyData.cs",
+              "RelativeDocumentMoniker": "joban-record-exe\\Models\\GameDatas\\Entity\\LobbyData.cs",
+              "ToolTip": "C:\\MyProject\\joban-record-exe\\joban-record-exe\\Models\\GameDatas\\Entity\\LobbyData.cs",
+              "RelativeToolTip": "joban-record-exe\\Models\\GameDatas\\Entity\\LobbyData.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAAYAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-22T08:52:44.977Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "GameResultData.cs",
+              "DocumentMoniker": "C:\\MyProject\\joban-record-exe\\joban-record-exe\\Models\\GameResultDatas\\Entity\\GameResultData.cs",
+              "RelativeDocumentMoniker": "joban-record-exe\\Models\\GameResultDatas\\Entity\\GameResultData.cs",
+              "ToolTip": "C:\\MyProject\\joban-record-exe\\joban-record-exe\\Models\\GameResultDatas\\Entity\\GameResultData.cs",
+              "RelativeToolTip": "joban-record-exe\\Models\\GameResultDatas\\Entity\\GameResultData.cs",
+              "ViewState": "AQIAAAMAAAAAAAAAAADwvxIAAAAdAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-22T08:43:55.439Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "GameDataMapper.cs",
+              "DocumentMoniker": "C:\\MyProject\\joban-record-exe\\joban-record-exe\\Models\\GameDatas\\Mapper\\GameDataMapper.cs",
+              "RelativeDocumentMoniker": "joban-record-exe\\Models\\GameDatas\\Mapper\\GameDataMapper.cs",
+              "ToolTip": "C:\\MyProject\\joban-record-exe\\joban-record-exe\\Models\\GameDatas\\Mapper\\GameDataMapper.cs",
+              "RelativeToolTip": "joban-record-exe\\Models\\GameDatas\\Mapper\\GameDataMapper.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAAhAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-22T08:38:13.552Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "EBaseAddressList.cs",
+              "DocumentMoniker": "C:\\MyProject\\joban-record-exe\\joban-record-exe\\Utilities\\EBaseAddressList.cs",
+              "RelativeDocumentMoniker": "joban-record-exe\\Utilities\\EBaseAddressList.cs",
+              "ToolTip": "C:\\MyProject\\joban-record-exe\\joban-record-exe\\Utilities\\EBaseAddressList.cs",
+              "RelativeToolTip": "joban-record-exe\\Utilities\\EBaseAddressList.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAADwvwAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-22T07:55:34.906Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "MemoryManager.cs",
+              "DocumentMoniker": "C:\\MyProject\\joban-record-exe\\joban-record-exe\\Utilities\\MemoryManager.cs",
+              "RelativeDocumentMoniker": "joban-record-exe\\Utilities\\MemoryManager.cs",
+              "ToolTip": "C:\\MyProject\\joban-record-exe\\joban-record-exe\\Utilities\\MemoryManager.cs",
+              "RelativeToolTip": "joban-record-exe\\Utilities\\MemoryManager.cs",
+              "ViewState": "AQIAADkAAAAAAAAAAADwv0EAAAAnAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-22T07:55:01.793Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "GameDataBuilder.cs",
+              "DocumentMoniker": "C:\\MyProject\\joban-record-exe\\joban-record-exe\\Models\\GameDatas\\Builder\\GameDataBuilder.cs",
+              "RelativeDocumentMoniker": "joban-record-exe\\Models\\GameDatas\\Builder\\GameDataBuilder.cs",
+              "ToolTip": "C:\\MyProject\\joban-record-exe\\joban-record-exe\\Models\\GameDatas\\Builder\\GameDataBuilder.cs",
+              "RelativeToolTip": "joban-record-exe\\Models\\GameDatas\\Builder\\GameDataBuilder.cs",
+              "ViewState": "AQIAAEAAAAAAAAAAAADwv1IAAACGAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-22T08:45:52.677Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "GameResultDataBuilder.cs",
+              "DocumentMoniker": "C:\\MyProject\\joban-record-exe\\joban-record-exe\\Models\\GameResultDatas\\Builder\\GameResultDataBuilder.cs",
+              "RelativeDocumentMoniker": "joban-record-exe\\Models\\GameResultDatas\\Builder\\GameResultDataBuilder.cs",
+              "ToolTip": "C:\\MyProject\\joban-record-exe\\joban-record-exe\\Models\\GameResultDatas\\Builder\\GameResultDataBuilder.cs",
+              "RelativeToolTip": "joban-record-exe\\Models\\GameResultDatas\\Builder\\GameResultDataBuilder.cs",
+              "ViewState": "AQIAAEAAAAAAAAAAAAAwwGMAAAABAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-22T07:45:54.016Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "MemberBuilder.cs",
+              "DocumentMoniker": "C:\\MyProject\\joban-record-exe\\joban-record-exe\\Models\\Member\\Builder\\MemberBuilder.cs",
+              "RelativeDocumentMoniker": "joban-record-exe\\Models\\Member\\Builder\\MemberBuilder.cs",
+              "ToolTip": "C:\\MyProject\\joban-record-exe\\joban-record-exe\\Models\\Member\\Builder\\MemberBuilder.cs",
+              "RelativeToolTip": "joban-record-exe\\Models\\Member\\Builder\\MemberBuilder.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAADwvwYAAAAwAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-22T07:51:53.773Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "GameDataLoader.cs",
+              "DocumentMoniker": "C:\\MyProject\\joban-record-exe\\joban-record-exe\\Utilities\\GameDataLoader.cs",
+              "RelativeDocumentMoniker": "joban-record-exe\\Utilities\\GameDataLoader.cs",
+              "ToolTip": "C:\\MyProject\\joban-record-exe\\joban-record-exe\\Utilities\\GameDataLoader.cs",
+              "RelativeToolTip": "joban-record-exe\\Utilities\\GameDataLoader.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAADwvw8AAAAsAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-22T08:11:02.561Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "PidLoader.cs",
+              "DocumentMoniker": "C:\\MyProject\\joban-record-exe\\joban-record-exe\\Utilities\\PidLoader.cs",
+              "RelativeDocumentMoniker": "joban-record-exe\\Utilities\\PidLoader.cs",
+              "ToolTip": "C:\\MyProject\\joban-record-exe\\joban-record-exe\\Utilities\\PidLoader.cs",
+              "RelativeToolTip": "joban-record-exe\\Utilities\\PidLoader.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAuwAoAAAA1AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-22T08:11:42.238Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "ChangeName.cs",
+              "DocumentMoniker": "C:\\MyProject\\joban-record-exe\\joban-record-exe\\Utilities\\ChangeName.cs",
+              "RelativeDocumentMoniker": "joban-record-exe\\Utilities\\ChangeName.cs",
+              "ToolTip": "C:\\MyProject\\joban-record-exe\\joban-record-exe\\Utilities\\ChangeName.cs",
+              "RelativeToolTip": "joban-record-exe\\Utilities\\ChangeName.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAADwvwAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-22T07:22:32.931Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\MyProject\\joban-record-exe\\joban-record-exe\\Program.cs",
+              "RelativeDocumentMoniker": "joban-record-exe\\Program.cs",
+              "ToolTip": "C:\\MyProject\\joban-record-exe\\joban-record-exe\\Program.cs",
+              "RelativeToolTip": "joban-record-exe\\Program.cs",
+              "ViewState": "AQIAAAMAAAAAAAAAAAAAABMAAAAxAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-22T07:08:40.756Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "Member.cs",
+              "DocumentMoniker": "C:\\MyProject\\joban-record-exe\\joban-record-exe\\Models\\Member\\Entity\\Member.cs",
+              "RelativeDocumentMoniker": "joban-record-exe\\Models\\Member\\Entity\\Member.cs",
+              "ToolTip": "C:\\MyProject\\joban-record-exe\\joban-record-exe\\Models\\Member\\Entity\\Member.cs",
+              "RelativeToolTip": "joban-record-exe\\Models\\Member\\Entity\\Member.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAADwvwgAAAAmAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-22T07:19:53.079Z",
+              "EditorCaption": ""
+            }
+          ]
+        },
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "GameResultLoader.cs",
+              "DocumentMoniker": "C:\\MyProject\\joban-record-exe\\joban-record-exe\\Utilities\\GameResultLoader.cs",
+              "RelativeDocumentMoniker": "joban-record-exe\\Utilities\\GameResultLoader.cs",
+              "ToolTip": "C:\\MyProject\\joban-record-exe\\joban-record-exe\\Utilities\\GameResultLoader.cs",
+              "RelativeToolTip": "joban-record-exe\\Utilities\\GameResultLoader.cs",
+              "ViewState": "AQIAABMAAAAAAAAAAAAYwCQAAAAnAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-22T05:03:59.733Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "GameData.cs",
+              "DocumentMoniker": "C:\\MyProject\\joban-record-exe\\joban-record-exe\\Models\\GameDatas\\Entity\\GameData.cs",
+              "RelativeDocumentMoniker": "joban-record-exe\\Models\\GameDatas\\Entity\\GameData.cs",
+              "ToolTip": "C:\\MyProject\\joban-record-exe\\joban-record-exe\\Models\\GameDatas\\Entity\\GameData.cs",
+              "RelativeToolTip": "joban-record-exe\\Models\\GameDatas\\Entity\\GameData.cs",
+              "ViewState": "AQIAAAEAAAAAAAAAAAAwwBQAAAAjAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-22T05:42:09.034Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
