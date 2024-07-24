@@ -1,4 +1,6 @@
-﻿using joban_record_exe.Utilities;
+﻿using joban_record_exe.Models.GameDatas.Entity;
+using joban_record_exe.Models.GameResultDatas.Entity;
+using joban_record_exe.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,12 +16,14 @@ namespace joban_record_exe
     
     internal class Program
     {
+       
         static async Task Main(string[] args)
         {
-            int pid = 0;
-            pid = await PidLoader.SearchProcessId(pid);
-            
-
+            ClientManager client = new ClientManager(null);
+            if (await client.ClientStart())
+            {
+                await client.ClientStart();
+            }
         }
     }
 }

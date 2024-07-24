@@ -32,6 +32,6 @@ namespace joban_record_exe.Utilities
         INGAME_NATION_READSIZE = 1,
         SELECTED_NAME_DATA_READSIZE = 1,
         NAME_DATA_READSIZE = 14,
-        MAPNAME_READSIZE = 64
+        MAPNAME_READSIZE = 60
     }
 }

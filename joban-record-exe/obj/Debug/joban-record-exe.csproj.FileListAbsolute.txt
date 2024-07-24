@@ -7,3 +7,14 @@ C:\MyProject\joban-record-exe\joban-record-exe\bin\Debug\joban-record-exe.exe
 C:\MyProject\joban-record-exe\joban-record-exe\bin\Debug\joban-record-exe.pdb
 C:\MyProject\joban-record-exe\joban-record-exe\obj\Debug\joban-record-exe.exe
 C:\MyProject\joban-record-exe\joban-record-exe\obj\Debug\joban-record-exe.pdb
+C:\MyProject\joban-record-exe\joban-record-exe\bin\Debug\System.Buffers.dll
+C:\MyProject\joban-record-exe\joban-record-exe\bin\Debug\System.Memory.dll
+C:\MyProject\joban-record-exe\joban-record-exe\bin\Debug\System.Numerics.Vectors.dll
+C:\MyProject\joban-record-exe\joban-record-exe\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+C:\MyProject\joban-record-exe\joban-record-exe\bin\Debug\System.Text.Encoding.CodePages.dll
+C:\MyProject\joban-record-exe\joban-record-exe\bin\Debug\System.Buffers.xml
+C:\MyProject\joban-record-exe\joban-record-exe\bin\Debug\System.Memory.xml
+C:\MyProject\joban-record-exe\joban-record-exe\bin\Debug\System.Numerics.Vectors.xml
+C:\MyProject\joban-record-exe\joban-record-exe\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+C:\MyProject\joban-record-exe\joban-record-exe\bin\Debug\System.Text.Encoding.CodePages.xml
+C:\MyProject\joban-record-exe\joban-record-exe\obj\Debug\joban-re.4EE6CE7C.Up2Date

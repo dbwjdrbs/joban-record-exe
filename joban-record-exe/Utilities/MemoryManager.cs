@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Net;
 using System.Runtime.InteropServices;
 using System.Security.Cryptography;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace joban_record_exe.Utilities
@@ -22,8 +24,13 @@ namespace joban_record_exe.Utilities
         [return: MarshalAs(UnmanagedType.Bool)]
         private static extern bool CloseHandle(IntPtr hObject);
 
-        const uint PROCESS_VM_READ = 0x0010;
-        const uint PROCESS_QUERY_INFORMATION = 0x0400;
+        [DllImport("kernel32.dll")]
+        private static extern bool WriteProcessMemory(IntPtr hProcess, IntPtr lpBaseAddress, byte[] lpBuffer, uint nSize, out IntPtr lpNumberOfBytesWritten);
+
+        private const uint PROCESS_QUERY_INFORMATION = 0x0400;
+        private const uint PROCESS_VM_READ = 0x0010;
+        private const uint PROCESS_VM_WRITE = 0x0020;
+        private const uint PROCESS_VM_OPERATION = 0x0008;
 
         public static int ReadPid(string targetOriginalFileName) // "syw2plus.exe"
         {
@@ -92,8 +99,30 @@ namespace joban_record_exe.Utilities
                 return null;
             }
         }
+        private static readonly object _lock = new object();
 
-        public static async Task<bool> CheckMemoryAsync(IntPtr baseAddress, int size, int pid, string memoryValue)
+        public static async Task<bool> WriteMemoryAsync(IntPtr address, int pid, byte[] data)
+        {
+            IntPtr hProcess = OpenProcess(PROCESS_VM_WRITE | PROCESS_VM_OPERATION, false, pid);
+            IntPtr bytesWritten;
+
+            return await Task.Run(() =>
+            {
+                lock (_lock)
+                {
+                    bool result = WriteProcessMemory(hProcess, address, data, (uint)data.Length, out bytesWritten);
+                    if (!result)
+                    {
+                        Console.WriteLine("Failed to write process memory. Error: " + Marshal.GetLastWin32Error());
+                        return false;
+                    }
+                    return true;
+                }
+            }).ConfigureAwait(false);
+        }
+
+
+        public static async Task<bool> CheckMemoryUntilMatchAsync(IntPtr baseAddress, int size, int pid, string value1)
         {
             IntPtr processHandle = OpenProcess(PROCESS_VM_READ, false, pid);
 
@@ -117,12 +146,17 @@ namespace joban_record_exe.Utilities
                     if (!CompareArrays(buffer, previousBuffer))
                     {
                         string message = BitConverter.ToString(buffer);
-                        if (message == memoryValue)
+                        if (message.Equals(value1)) 
                         {
                             memoryMatch = true;
                             timer.Stop();
                         }
                         Array.Copy(buffer, previousBuffer, size);
+                    }
+                    else
+                    {
+                        memoryMatch = false;
+                        timer.Stop();
                     }
                 }
                 else
@@ -140,20 +174,12 @@ namespace joban_record_exe.Utilities
             {
                 await Task.Delay(100);
             }
-            try
-            {
-                CloseHandle(processHandle);
-            }
-            catch
-            {
-                return false;
-            }
-
+            // try catch 처리
+            CloseHandle(processHandle);
             return memoryMatch;
         }
-        
 
-        public static async Task<bool> CheckMemoryAsync(IntPtr baseAddress, int size, int pid, string value1, string value2)
+        public static async Task<bool> CheckMemoryAsync(IntPtr baseAddress, int size, int pid, string value)
         {
             IntPtr processHandle = OpenProcess(PROCESS_VM_READ, false, pid);
 
@@ -167,17 +193,20 @@ namespace joban_record_exe.Utilities
             byte[] previousBuffer = new byte[size];
 
             int bytesRead;
-            bool memoryMatch = true;
+            bool memoryMatch = false;
 
             System.Timers.Timer timer = new System.Timers.Timer(1000); // 1초 간격으로 타이머 설정
             timer.Elapsed += (sender, e) =>
             {
+                Console.WriteLine($"{value} 이 될때까지 대기중.");
+
                 if (ReadProcessMemory(processHandle, baseAddress, buffer, size, out bytesRead) && bytesRead == size)
                 {
                     if (!CompareArrays(buffer, previousBuffer))
                     {
                         string message = BitConverter.ToString(buffer);
-                        if (message.Equals(value1) || message.Equals(value2)) 
+
+                        if (message.Equals(value))
                         {
                             memoryMatch = true;
                             timer.Stop();
@@ -205,8 +234,65 @@ namespace joban_record_exe.Utilities
             return memoryMatch;
         }
 
+        public static async Task<bool> CheckMemoryAsync(IntPtr baseAddress, int size, int pid, string[] values)
+        {
+            IntPtr processHandle = OpenProcess(PROCESS_VM_READ, false, pid);
+
+            if (processHandle == IntPtr.Zero)
+            {
+                CloseHandle(processHandle);
+                return false;
+            }
+
+            byte[] buffer = new byte[size];
+            byte[] previousBuffer = new byte[size];
+
+            int bytesRead;
+            bool memoryMatch = false;
+
+            System.Timers.Timer timer = new System.Timers.Timer(1000); // 1초 간격으로 타이머 설정
+            timer.Elapsed += (sender, e) =>
+            {
+                if (ReadProcessMemory(processHandle, baseAddress, buffer, size, out bytesRead) && bytesRead == size)
+                {
+                    if (!CompareArrays(buffer, previousBuffer))
+                    {
+                        string message = BitConverter.ToString(buffer);
+                        foreach(string str in values)
+                        {
+                            if (message.Equals(str))
+                            {
+                                memoryMatch = true;
+                                timer.Stop();
+                                break;
+                            }
+                            Array.Copy(buffer, previousBuffer, size);
+                        }
+                        
+                    }
+                }
+                else
+                {
+                    CloseHandle(processHandle);
+                    Console.WriteLine("메모리 읽기에 실패했습니다.");
+                    timer.Stop();
+                }
+            };
+
+            timer.Start();
+
+            // 타이머가 멈출 때까지 기다립니다.
+            while (timer.Enabled)
+            {
+                await Task.Delay(100);
+            }
+            // try catch 처리
+            CloseHandle(processHandle);
+            return memoryMatch;
+        }
+
         // 배열 비교 함수
-        static bool CompareArrays(byte[] array1, byte[] array2)
+        private static bool CompareArrays(byte[] array1, byte[] array2)
         {
             if (array1.Length != array2.Length)
                 return false;
