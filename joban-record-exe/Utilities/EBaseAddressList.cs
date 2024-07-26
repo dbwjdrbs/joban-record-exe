@@ -26,7 +26,7 @@ namespace joban_record_exe.Utilities
         RESULT_READSIZE = 160,
         PLAYER_NAME_READSIZE = 120,
         CLIENT_STATUS_READSIZE = 1,
-        PLAYTIME_READSIZE = 4,
+        PLAY_TIME_READSIZE = 4,
         HOST_READSIZE = 1,
         INGAME_PLAYER_NUMBER_READSIZE = 1,
         INGAME_NATION_READSIZE = 1,

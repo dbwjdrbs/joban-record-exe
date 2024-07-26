@@ -12,5 +12,21 @@ namespace JobanRecordApp.Models.Members.Entity
     {
         public long memberId { get; set; }
         public string name { get; set; }
+
+        public Member(long memberId, string name)
+        {
+            this.memberId = memberId;
+            this.name = name;
+        }
+
+        public class Authentication
+        {
+            public string accessToken { get; set; }
+
+            public Authentication(string accessToken)
+            {
+                this.accessToken = accessToken;
+            }
+        }
     }
 }

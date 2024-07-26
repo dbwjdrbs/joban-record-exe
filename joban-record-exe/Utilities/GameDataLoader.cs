@@ -10,29 +10,64 @@ namespace joban_record_exe.Utilities
 {
     internal static class GameDataLoader
     {
-        private static GameDataDto.Post gameDataDto;
+        private static GameData.Post gameDataDto;
         private static int pid;
 
-        public static async Task<GameDataDto.Post> GetPostGameData(int cureentPid)
+        public static GameData.Post GetPostGameData(int cureentPid)
         {
             pid = cureentPid;
-            if (await MemoryManager.CheckMemoryUntilMatchAsync((IntPtr)EBaseAddressList.CLIENT_STATUS, (int)EBaseAddressList.CLIENT_STATUS_READSIZE, pid, "03"))
-            {
-                string player = GetPlayer();
-                string gameVersion = GetGameVersion();
-                string mapName = GetMapName();
 
-                gameDataDto = new GameDataDto.Post(player, gameVersion, mapName);
-            }
+            List<string> players = GetPlayer();
+            string gameVersion = GetGameVersion();
+            string mapName = GetMapName();
+
+            gameDataDto = new GameData.Post(players, gameVersion, mapName);
+
 
             return gameDataDto;
         }
 
+        public static GameData.Patch GetPatchGameData(int cureentPid, long gameId)
+        {
+            pid = cureentPid;
+            int time = GetPlayTime();
+            return new GameData.Patch(gameId, time);
+        }
         //public static async Task<GameDataDto.Patch> GetPatchGameData
 
-        private static string GetPlayer()
+        private static int GetPlayTime()
         {
-            return byteArrayToString(MemoryManager.ReadMemory((IntPtr)EBaseAddressList.PLAYER_NAME, (int)EBaseAddressList.PLAYER_NAME_READSIZE, pid));
+            byte[] datas = MemoryManager.ReadMemory((IntPtr)EBaseAddressList.PLAY_TIME, (int)EBaseAddressList.PLAY_TIME_READSIZE, pid);
+            int[] times = new GameResultLoader().HexToDecLittleEndian(datas);
+            return times[0];
+        }
+
+        private static List<string> GetPlayer()
+        {
+            Encoding euckr = GetEuckr();
+
+            byte[] datas = MemoryManager.ReadMemory((IntPtr)EBaseAddressList.PLAYER_NAME, (int)EBaseAddressList.PLAYER_NAME_READSIZE, pid);
+            string player = euckr.GetString(datas);
+            List<string> players = new List<string>();
+            string currentName = "";
+
+            for (int i = 0; i < player.Length; i++)
+            {
+                char c = player[i];
+                // 첫 글자가 \0이 아닐때부터 ~ \0 을 만날때까지
+                // 01 03 AD 00 00 00 DD FF AA 00 00 00
+                if (c != '\0')
+                {
+                    currentName += c.ToString();
+                }
+                else if (c == '\0' && !currentName.Equals(""))
+                {
+                    players.Add(currentName);
+                    currentName = "";
+                }
+            }
+
+            return players;
         }
 
         private static string byteArrayToString(byte[] bytes)

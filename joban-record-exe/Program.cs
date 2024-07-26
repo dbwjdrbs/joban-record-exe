@@ -1,6 +1,7 @@
 ﻿using joban_record_exe.Models.GameDatas.Entity;
 using joban_record_exe.Models.GameResultDatas.Entity;
 using joban_record_exe.Utilities;
+using JobanRecordApp.Models.Members.Entity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,7 +20,9 @@ namespace joban_record_exe
        
         static async Task Main(string[] args)
         {
-            ClientManager client = new ClientManager(null);
+            Member member = new Member(1, "유정균");
+            Member.Authentication accessToken = new Member.Authentication(null);
+            ClientManager client = new ClientManager(member, accessToken);
             if (await client.ClientStart())
             {
                 await client.ClientStart();

@@ -134,23 +134,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Models\Datas\Data.cs" />
+    <Compile Include="Models\Datas\JsonData.cs" />
     <Compile Include="Models\GameResultDatas\Entity\LobbyData.cs" />
     <Compile Include="Models\GameResultDatas\Entity\ResultData.cs" />
-    <Compile Include="Models\GameResultDatas\Facade\GameResultDataFacade.cs" />
-    <Compile Include="Models\Members\Builder\MemberBuilder.cs" />
     <Compile Include="Utilities\Client\ClientManager.cs" />
     <Compile Include="Utilities\EBaseAddressList.cs" />
     <Compile Include="Utilities\Extensions\HttpClientExtensions.cs" />
-    <Compile Include="Utilities\InGameNameChanger.cs" />
     <Compile Include="Utilities\GameDataLoader.cs" />
     <Compile Include="Utilities\GameResultLoader.cs" />
-    <Compile Include="Models\GameDatas\Entity\GameDataDto.cs" />
-    <Compile Include="Models\GameResultDatas\Entity\GameResultDataDto.cs" />
+    <Compile Include="Models\GameDatas\Entity\GameData.cs" />
+    <Compile Include="Models\GameResultDatas\Entity\GameResultData.cs" />
     <Compile Include="Models\Members\Entity\Member.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utilities\InGameNameChanger.cs" />
     <Compile Include="Utilities\MemoryManager.cs" />
-    <Compile Include="Utilities\PidLoader.cs" />
     <Compile Include="Utilities\RestApi\RestClient.cs" />
   </ItemGroup>
   <ItemGroup>

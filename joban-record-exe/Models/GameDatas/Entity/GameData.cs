@@ -3,21 +3,30 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace joban_record_exe.Models.GameDatas.Entity
 {
-    internal class GameDataDto
+    internal class GameData
     {
+        public GameData() { }
+
+        public GameData(long gameDataId)
+        {
+            this.gameDataId = gameDataId;
+        }
+        public long gameDataId { get; set; }
+
         public class Post
         {
-            public string player { get; set; }
+            public List<string> players { get; set; }
             public string gameVersion { get; set; }
             public string mapName { get; set; } // 다른 영역의 메모리.
 
-            public Post(string player, string gameVersion, string mapName)
+            public Post(List<string> players, string gameVersion, string mapName)
             {
-                this.player = player;
+                this.players = players;
                 this.gameVersion = gameVersion;
                 this.mapName = mapName;
             }
@@ -28,8 +37,14 @@ namespace joban_record_exe.Models.GameDatas.Entity
         public class Patch
         {
             public long gameDataId { get; set; }
-            public GameResultDataDto gameResultDataDto { get; set; }
             public int playTime { get; set; }
+
+            public Patch(long gameDataId, int playTime)
+            {
+                this.gameDataId = gameDataId;
+                this.playTime = playTime;
+            }
         }
+
     }
 }

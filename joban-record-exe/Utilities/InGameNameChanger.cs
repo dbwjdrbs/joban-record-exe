@@ -16,12 +16,11 @@ namespace joban_record_exe.Utilities
             this.name = name;
         }
 
-        public async Task<bool> ChangeInGameName(int cureentPid)
+        public async Task ChangeInGameName(int cureentPid)
         {
             pid = cureentPid;
             if (pid != 0)
             {
-                Console.WriteLine("네임 체인저 실행");
                 await ChangeName(pid);
                 SetTimer();
                 timer.Start();
@@ -31,8 +30,6 @@ namespace joban_record_exe.Utilities
                     await Task.Delay(100);
                 }
             }
-
-            return true;
         }
 
         private void SetTimer()
@@ -45,9 +42,10 @@ namespace joban_record_exe.Utilities
         {
             await ChangeName(pid);
 
-            if (await MemoryManager.CheckMemoryUntilMatchAsync((IntPtr)EBaseAddressList.CLIENT_STATUS, (int)EBaseAddressList.CLIENT_STATUS_READSIZE, pid, "03"))
+            string[] values = { "03", "00" };
+
+            if (await MemoryManager.CheckMemoryUntilMatchAsync((IntPtr)EBaseAddressList.CLIENT_STATUS, (int)EBaseAddressList.CLIENT_STATUS_READSIZE, pid, values))
             {
-                Console.WriteLine("ChangeInGameName Timer Stop");
                 timer.Stop();
             }
 
@@ -57,7 +55,7 @@ namespace joban_record_exe.Utilities
         {
             byte[] nameToByteArray = FillEmptyBuffer((int)EBaseAddressList.NAME_DATA_READSIZE, StringToByteArray(name));
             byte[] seletedNameValue = { 0X00 };
-            Console.WriteLine("이름 변경 " + name);
+            Console.WriteLine("Change Name to " + name);
             await MemoryManager.WriteMemoryAsync((IntPtr)EBaseAddressList.NAME_DATA, pid, nameToByteArray);
             await MemoryManager.WriteMemoryAsync((IntPtr)EBaseAddressList.SELECTED_NAME_DATA, pid, seletedNameValue);
         }
