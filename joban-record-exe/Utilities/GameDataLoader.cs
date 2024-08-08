@@ -17,7 +17,7 @@ namespace joban_record_exe.Utilities
         {
             pid = cureentPid;
 
-            List<string> players = GetPlayer();
+            List<string> players = GetPlayers();
             string gameVersion = GetGameVersion();
             string mapName = GetMapName();
 
@@ -35,14 +35,22 @@ namespace joban_record_exe.Utilities
         }
         //public static async Task<GameDataDto.Patch> GetPatchGameData
 
-        private static int GetPlayTime()
+        public static int GetPlayTime()
         {
             byte[] datas = MemoryManager.ReadMemory((IntPtr)EBaseAddressList.PLAY_TIME, (int)EBaseAddressList.PLAY_TIME_READSIZE, pid);
-            int[] times = new GameResultLoader().HexToDecLittleEndian(datas);
-            return times[0];
+            int times = HexToDecLittleEndian(datas);
+            return times;
         }
 
-        private static List<string> GetPlayer()
+        public static int HexToDecLittleEndian(byte[] datas)
+        {
+            string hexString;
+            byte[] reorderedBytes = { datas[3], datas[2], datas[1], datas[0] };
+            hexString = BitConverter.ToString(reorderedBytes).Replace("-", "");
+            return Convert.ToInt32(hexString, 16);
+        }
+
+        private static List<string> GetPlayers()
         {
             Encoding euckr = GetEuckr();
 
@@ -68,6 +76,33 @@ namespace joban_record_exe.Utilities
             }
 
             return players;
+        }
+
+        public static int GetCureentUserNumber(string name)
+        {
+            Encoding euckr = GetEuckr();
+
+            byte[] datas = MemoryManager.ReadMemory((IntPtr)EBaseAddressList.PLAYER_LIST, (int)EBaseAddressList.PLAYER_NAME_READSIZE, pid);
+
+            List<string> players = new List<string>();
+            int chunkSize = 15;
+
+            for (int i = 0; i < datas.Length; i += chunkSize)
+            {
+                int remainingBytes = datas.Length - i;
+                int currentChunkSize = Math.Min(chunkSize, remainingBytes);
+                byte[] chunk = new byte[currentChunkSize];
+                Array.Copy(datas, i, chunk, 0, currentChunkSize);
+
+                players.Add(euckr.GetString(chunk).Replace("\0", ""));
+            }
+
+            foreach (string str in players)
+            {
+                Console.WriteLine(str);
+            }
+
+            return players.IndexOf(name);
         }
 
         private static string byteArrayToString(byte[] bytes)

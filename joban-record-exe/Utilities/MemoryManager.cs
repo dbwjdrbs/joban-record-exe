@@ -27,6 +27,9 @@ namespace joban_record_exe.Utilities
         [DllImport("kernel32.dll")]
         private static extern bool WriteProcessMemory(IntPtr hProcess, IntPtr lpBaseAddress, byte[] lpBuffer, uint nSize, out IntPtr lpNumberOfBytesWritten);
 
+        [DllImport("kernel32.dll")]
+        static extern uint GetLastError();
+
         private const uint PROCESS_QUERY_INFORMATION = 0x0400;
         private const uint PROCESS_VM_READ = 0x0010;
         private const uint PROCESS_VM_WRITE = 0x0020;
@@ -68,29 +71,27 @@ namespace joban_record_exe.Utilities
         public static byte[] ReadMemory(IntPtr baseAddress, int bytesToRead, int pid)
         {
             byte[] fail = { 0 };
-            // 프로세스 핸들을 엽니다.
             IntPtr hProcess = OpenProcess(PROCESS_VM_READ | PROCESS_QUERY_INFORMATION, false, pid);
 
             if (hProcess == IntPtr.Zero)
             {
-                Console.WriteLine("프로세스를 열 수 없습니다.");
+                uint error = GetLastError();
+                Console.WriteLine($"프로세스를 열 수 없습니다. 오류 코드: {error}");
+                CloseHandle(hProcess);
                 return fail;
             }
 
             byte[] buffer = new byte[bytesToRead];
             int bytesRead;
 
-            // 메모리 공간을 읽어옵니다.
             if (ReadProcessMemory(hProcess, baseAddress, buffer, buffer.Length, out bytesRead) && bytesRead == bytesToRead)
             {
-                // 프로세스 핸들을 닫습니다.
                 CloseHandle(hProcess);
                 return buffer;
             }
             else
             {
                 Console.WriteLine("메모리 읽기 실패.");
-                // 프로세스 핸들을 닫습니다.
                 CloseHandle(hProcess);
                 return fail;
             }
@@ -111,8 +112,10 @@ namespace joban_record_exe.Utilities
                     if (!result)
                     {
                         Console.WriteLine("Failed to write process memory. Error: " + Marshal.GetLastWin32Error());
+                        CloseHandle(hProcess);
                         return false;
                     }
+                    CloseHandle(hProcess);
                     return true;
                 }
             }).ConfigureAwait(false);
@@ -121,11 +124,11 @@ namespace joban_record_exe.Utilities
 
         public static async Task<bool> CheckMemoryUntilMatchAsync(IntPtr baseAddress, int size, int pid, string value)
         {
-            IntPtr processHandle = OpenProcess(PROCESS_VM_READ, false, pid);
+            IntPtr hProcess = OpenProcess(PROCESS_VM_READ, false, pid);
 
-            if (processHandle == IntPtr.Zero)
+            if (hProcess == IntPtr.Zero)
             {
-                CloseHandle(processHandle);
+                CloseHandle(hProcess);
                 return false;
             }
 
@@ -138,7 +141,7 @@ namespace joban_record_exe.Utilities
             System.Timers.Timer timer = new System.Timers.Timer(1000); // 1초 간격으로 타이머 설정
             timer.Elapsed += (sender, e) =>
             {
-                if (ReadProcessMemory(processHandle, baseAddress, buffer, size, out bytesRead) && bytesRead == size)
+                if (ReadProcessMemory(hProcess, baseAddress, buffer, size, out bytesRead) && bytesRead == size)
                 {
                     if (!CompareArrays(buffer, previousBuffer))
                     {
@@ -158,7 +161,7 @@ namespace joban_record_exe.Utilities
                 }
                 else
                 {
-                    CloseHandle(processHandle);
+                    CloseHandle(hProcess);
                     Console.WriteLine("메모리 읽기에 실패했습니다.");
                     timer.Stop();
                 }
@@ -172,17 +175,17 @@ namespace joban_record_exe.Utilities
                 await Task.Delay(100);
             }
             // try catch 처리
-            CloseHandle(processHandle);
+            CloseHandle(hProcess);
             return memoryMatch;
         }
 
         public static async Task<bool> CheckMemoryUntilMatchAsync(IntPtr baseAddress, int size, int pid, string[] values)
         {
-            IntPtr processHandle = OpenProcess(PROCESS_VM_READ, false, pid);
+            IntPtr hProcess = OpenProcess(PROCESS_VM_READ, false, pid);
 
-            if (processHandle == IntPtr.Zero)
+            if (hProcess == IntPtr.Zero)
             {
-                CloseHandle(processHandle);
+                CloseHandle(hProcess);
                 return false;
             }
 
@@ -195,7 +198,7 @@ namespace joban_record_exe.Utilities
             System.Timers.Timer timer = new System.Timers.Timer(1000); // 1초 간격으로 타이머 설정
             timer.Elapsed += (sender, e) =>
             {
-                if (ReadProcessMemory(processHandle, baseAddress, buffer, size, out bytesRead) && bytesRead == size)
+                if (ReadProcessMemory(hProcess, baseAddress, buffer, size, out bytesRead) && bytesRead == size)
                 {
                     if (!CompareArrays(buffer, previousBuffer))
                     {
@@ -215,7 +218,7 @@ namespace joban_record_exe.Utilities
                 }
                 else
                 {
-                    CloseHandle(processHandle);
+                    CloseHandle(hProcess);
                     Console.WriteLine("메모리 읽기에 실패했습니다.");
                     timer.Stop();
                 }
@@ -229,17 +232,17 @@ namespace joban_record_exe.Utilities
                 await Task.Delay(100);
             }
             // try catch 처리
-            CloseHandle(processHandle);
+            CloseHandle(hProcess);
             return memoryMatch;
         }
 
         public static async Task<bool> CheckMemoryAsync(IntPtr baseAddress, int size, int pid, string value)
         {
-            IntPtr processHandle = OpenProcess(PROCESS_VM_READ, false, pid);
+            IntPtr hProcess = OpenProcess(PROCESS_VM_READ, false, pid);
 
-            if (processHandle == IntPtr.Zero)
+            if (hProcess == IntPtr.Zero)
             {
-                CloseHandle(processHandle);
+                CloseHandle(hProcess);
                 return false;
             }
 
@@ -254,7 +257,7 @@ namespace joban_record_exe.Utilities
             {
                 Console.WriteLine($"{value} 이 될때까지 대기중.");
 
-                if (ReadProcessMemory(processHandle, baseAddress, buffer, size, out bytesRead) && bytesRead == size)
+                if (ReadProcessMemory(hProcess, baseAddress, buffer, size, out bytesRead) && bytesRead == size)
                 {
                     if (!CompareArrays(buffer, previousBuffer))
                     {
@@ -270,7 +273,7 @@ namespace joban_record_exe.Utilities
                 }
                 else
                 {
-                    CloseHandle(processHandle);
+                    CloseHandle(hProcess);
                     Console.WriteLine("메모리 읽기에 실패했습니다.");
                     timer.Stop();
                 }
@@ -284,17 +287,17 @@ namespace joban_record_exe.Utilities
                 await Task.Delay(100);
             }
             // try catch 처리
-            CloseHandle(processHandle);
+            CloseHandle(hProcess);
             return memoryMatch;
         }
 
         public static async Task<bool> CheckMemoryAsync(IntPtr baseAddress, int size, int pid, string[] values)
         {
-            IntPtr processHandle = OpenProcess(PROCESS_VM_READ, false, pid);
+            IntPtr hProcess = OpenProcess(PROCESS_VM_READ, false, pid);
 
-            if (processHandle == IntPtr.Zero)
+            if (hProcess == IntPtr.Zero)
             {
-                CloseHandle(processHandle);
+                CloseHandle(hProcess);
                 return false;
             }
 
@@ -307,7 +310,7 @@ namespace joban_record_exe.Utilities
             System.Timers.Timer timer = new System.Timers.Timer(1000); // 1초 간격으로 타이머 설정
             timer.Elapsed += (sender, e) =>
             {
-                if (ReadProcessMemory(processHandle, baseAddress, buffer, size, out bytesRead) && bytesRead == size)
+                if (ReadProcessMemory(hProcess, baseAddress, buffer, size, out bytesRead) && bytesRead == size)
                 {
                     if (!CompareArrays(buffer, previousBuffer))
                     {
@@ -327,7 +330,7 @@ namespace joban_record_exe.Utilities
                 }
                 else
                 {
-                    CloseHandle(processHandle);
+                    CloseHandle(hProcess);
                     Console.WriteLine("메모리 읽기에 실패했습니다.");
                     timer.Stop();
                 }
@@ -341,7 +344,7 @@ namespace joban_record_exe.Utilities
                 await Task.Delay(100);
             }
             // try catch 처리
-            CloseHandle(processHandle);
+            CloseHandle(hProcess);
             return memoryMatch;
         }
 

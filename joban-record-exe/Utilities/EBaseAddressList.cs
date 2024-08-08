@@ -20,6 +20,7 @@ namespace joban_record_exe.Utilities
         SELECTED_NAME_DATA = 0x0066966C,
         NAME_DATA = 0x0066966E,
         MAP_NAME = 0x00632D56,
+        PLAYER_LIST = 0x006374C4,
 
         GAME_VERSION_READSIZE = 16,
         LOBBY_READSIZE = 48,

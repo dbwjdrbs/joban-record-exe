@@ -152,7 +152,7 @@ namespace joban_record_exe.Utilities.RestApi
                         Console.WriteLine(ex.Message);
                     }
 
-                    return null;
+                    return "{\"data\":{\"gameDataId\":0}}";
                 }
             }
         }

@@ -10,28 +10,30 @@ using System.Reflection;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 
 namespace joban_record_exe.Utilities
 {
-    internal class GameResultLoader
+    internal static class GameResultLoader
     {
-
+        private static int pid;
+        
         // GameData
-        public GameResultData GetGameResult(int pid, Member member, long gameId, int isWin, int myNumber)
+        public static GameResultData GetGameResult(int cureentPid, Member member, LobbyData lobbyData, long gameId, int isWin)
         {
-            string inGameNation = GetInGameNation(MemoryManager.ReadMemory((IntPtr)EBaseAddressList.INGAME_NATION, (int)EBaseAddressList.INGAME_NATION_READSIZE, pid));
+            pid = cureentPid;
+            Console.WriteLine($"PID = {pid}");
 
-            byte[] lobbyDatas = MemoryManager.ReadMemory((IntPtr)EBaseAddressList.LOBBY_DATA, (int)EBaseAddressList.LOBBY_READSIZE, pid);
+            string inGameNation = GetInGameNation();
 
-            LobbyData lobbyData = GetLobbyData(lobbyDatas, myNumber);
+            Console.WriteLine($"멤버이름 {member.name}");
 
-            byte[] resultDatas = MemoryManager.ReadMemory((IntPtr)EBaseAddressList.RESULT_DATA, (int)EBaseAddressList.RESULT_READSIZE, pid);
+            int currentUserNumber = GameDataLoader.GetCureentUserNumber(member.name);
 
-            ResultData resultData = GetResultData(resultDatas, myNumber);
+            ResultData resultData = GetResultData(currentUserNumber);
 
             GameData gameData = new GameData(gameId);
-
 
             return new GameResultData(
                 member,
@@ -53,8 +55,16 @@ namespace joban_record_exe.Utilities
                 );
         }
 
-        private string GetInGameNation(byte[] datas)
+        public static LobbyData GetLobbyData(int cureentPid, Member member)
         {
+            pid = cureentPid;
+            int currentUserNumber = GameDataLoader.GetCureentUserNumber(member.name);
+            return GetLobbyData(currentUserNumber);
+        }
+
+        private static string GetInGameNation()
+        {
+            byte[] datas = MemoryManager.ReadMemory((IntPtr)EBaseAddressList.INGAME_NATION, (int)EBaseAddressList.INGAME_NATION_READSIZE, pid);
             string nation = "";
 
             switch (datas[0])
@@ -89,33 +99,40 @@ namespace joban_record_exe.Utilities
             return Encoding.GetEncoding(euckrCodePage);
         }
 
-        private LobbyData GetLobbyData(byte[] lobbyDatas, int myNumber)
+        private static LobbyData GetLobbyData(int currentUserNumber)
         {
-            int index = myNumber;
+            byte[] lobbyDatas = MemoryManager.ReadMemory((IntPtr)EBaseAddressList.LOBBY_DATA, (int)EBaseAddressList.LOBBY_READSIZE, pid);
+
+            Console.WriteLine($"usernum = {currentUserNumber}");
+
+            Console.WriteLine(BitConverter.ToString(lobbyDatas));
+
+            int index = currentUserNumber;
 
             int teamNumber = 0;
             int playerNumber = 0;
             int isHuman = 0;
             string nation = "";
+
             for (int j = 0; j < 6; j++)
             {
                 if (j == 0)
                 {
                     switch (lobbyDatas[j + (index * 6)])
                     {
-                        case 01:
+                        case 1:
                             nation = "조선";
                             break;
-                        case 02:
+                        case 2:
                             nation = "일본";
                             break;
-                        case 03:
+                        case 3:
                             nation = "명";
                             break;
-                        case 05:
+                        case 5:
                             nation = "랜덤";
                             break;
-                        case 06:
+                        case 6:
                             nation = "관전";
                             break;
                         default:
@@ -140,13 +157,15 @@ namespace joban_record_exe.Utilities
             return new LobbyData(teamNumber, isHuman, playerNumber, nation);
         }
 
-        private ResultData GetResultData(byte[] datas, int inGameNumber)
+        private static ResultData GetResultData(int cureentUserNumber)
         {
+            byte[] datas = MemoryManager.ReadMemory((IntPtr)EBaseAddressList.RESULT_DATA, (int)EBaseAddressList.RESULT_READSIZE, pid);
+
             int[] convertedData = HexToDecLittleEndian(datas);
 
             // convertData는 8번씩 끊어서 저장, ResultData에 넣기.
 
-            int index = inGameNumber * 8;
+            int index = cureentUserNumber * 8;
 
             ResultData result = new ResultData(
                 convertedData[index],
@@ -162,7 +181,7 @@ namespace joban_record_exe.Utilities
             return result;
         }
 
-        public int[] HexToDecLittleEndian(byte[] bytes)
+        public static int[] HexToDecLittleEndian(byte[] bytes)
         {
             int[] result = new int[bytes.Length];
             int cnt = 0;
